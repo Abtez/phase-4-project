@@ -36,11 +36,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :handle_blank_field
     end
 
     def destroy
-        product = product.find_by(id: params[:id])
+        product = Product.find_by(id: params[:id])
         if product
             product.destroy
             head :no_content
-            # render json: {error: "production not found"}
+            render json: {success: "Product destroy successfully"}
         else
             render json: {error: "Product not found"}
         end

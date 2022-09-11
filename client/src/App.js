@@ -10,6 +10,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Error from './components/Error';
 import Footer from './components/Footer';
+import EditProduct from './components/EditProduct';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
   const [error, seterror] = useState(false)
 
   const [products, setProducts] = useState([])
+  const [product, setProduct] = useState({})
   
   useEffect(() => {
     fetch("/products")
@@ -84,6 +86,49 @@ function App() {
   })
   }
 
+  function fetchProductData(data){
+    setProduct(data)
+  }
+
+  function editProduct(product, id){
+    fetch(`/products/${id}`, {
+      method: "PATCH",
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(product)
+    })
+    .then(res => {
+      if (res.status === 422) {
+          res.json().then(data => {
+              seterror(true)
+          })
+      }
+      else{
+          res.json().then(data => {
+            setProducts([products])
+            seterror(false)
+            navigate(`/product/${data.id}`)
+            window.location.reload()
+          })
+      }
+  })
+  }
+
+  function deleteProduct(product){
+    fetch(`/products/${product.id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      navigate("/")
+      window.location.reload()
+    })
+  }
+
   function getProductReviews(data){
     setreviews(data)
   }
@@ -137,7 +182,8 @@ function App() {
       <Routes>
         <Route path='*' element={<Error />} />
         <Route exact path='/' element={<Home products={products} />} />
-        <Route exact path='/product/:id' element={<SingleProduct currentUser={currentUser} getProductReviews={getProductReviews} />} />
+        <Route exact path='/product/:id' element={<SingleProduct deleteProduct={deleteProduct} fetchProductData={fetchProductData} currentUser={currentUser} getProductReviews={getProductReviews} />} />
+        <Route exact path='/product/:id/edit' element={<EditProduct product={product} currentUser={currentUser} editProduct={editProduct} error={error} />} />
         <Route exact path='/product/:id/new/review' element={<AddReview error={error} addReview={addReview} currentUser={currentUser} />} />
         <Route exact path='/product/new' element={<AddProduct error={error} addProduct={addProduct} currentUser={currentUser} />} />
       </Routes>

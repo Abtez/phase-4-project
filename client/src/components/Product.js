@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 export default function Product({category, description, price, title, image, id}) {
 
     function capitalize(str){
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        if(str) return str.charAt(0).toUpperCase() + str.slice(1);
+        return true
     }
     
     return(

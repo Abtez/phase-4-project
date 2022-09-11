@@ -1,15 +1,14 @@
 import { useState } from "react";
 
 
-export default function AddProduct({currentUser, addProduct, error}){
+export default function EditProduct({currentUser, editProduct, error, product}){
     
     const [formData, setformData] = useState({
-        title: '',
-        description: '',
-        category: '',
-        image: '',
-        price: '',
-        user: currentUser.id
+        title: product.title,
+        description: product.description,
+        category: product.category,
+        image: product.image,
+        price: product.price,
     })
 
     function handleInput(e){
@@ -23,22 +22,13 @@ export default function AddProduct({currentUser, addProduct, error}){
 
     function handleSubmit(e){
         e.preventDefault()
-        addProduct(formData)
-        setformData({
-            title: '',
-            description: '',
-            category: '',
-            image: '',
-            price: '',
-            user_id: currentUser.id
-        })
-        console.log(formData);
+        editProduct(formData, product.id)
     }
 
     return(
         <>
         <div className="container">
-            <h3 className="my-4 text-center"><span className="line">Add</span> Product</h3>            
+            <h3 className="my-4 text-center"><span className="line">Edit</span> Product</h3>            
 
             <div className="row">
                 <div className="col-md-2"></div>
@@ -56,7 +46,7 @@ export default function AddProduct({currentUser, addProduct, error}){
                             <input value={formData.image} onChange={handleInput} className="form-control my-3" type="url" name="image" placeholder="Image URL" />
                             <input value={formData.price} onChange={handleInput} className="form-control my-3" type="number" name="price" placeholder="Price" />
                             <select required value={formData.category} onChange={handleInput} className="my-3" name="category" style={{height:'2.5rem', width:'100%'}}>
-                            <option defaultValue="electronics">Product category</option>
+                                <option defaultValue="electronics">Product category</option>
                                 <option value="construction">Antique</option>
                                 <option value="electronics">Electronics</option>
                                 <option value="furniture">Furniture</option>
