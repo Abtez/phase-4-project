@@ -53,24 +53,36 @@ export default function Register({getUser}){
 
     return(
         <>
+        <div style={{height: 'auto'}} class="bg-image-container">
+        <div class="login-container">
         <form onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                 <h3 className="my-4 text-center"><span className="line">User</span> Registration</h3>
                     {error ? <p className='text-danger' id='error'>All fields are required. Or try a different username.</p> : false}
+                    <div class="input-group">
                     <input value={formData.username} onChange={handleInput} className="form-control my-3" type="text" name="username" placeholder="Enter username" />
+                    </div>
+                    <div class="input-group">
                     <input value={formData.password} onChange={handleInput} className="form-control my-3" type="password" name="password" placeholder="Password" />
+                    </div> 
+                    <div class="input-group">
                     <input value={formData.avatar} onChange={handleInput} className="form-control my-3" type="url" name="avatar" placeholder="Profile picture URL" />
+                    </div>
+                    <div class="input-group">
                     <textarea value={formData.bio} onChange={handleInput} className="form-control w-100" name='bio' placeholder="Enter a short bio" style={{height:'7rem'}}></textarea>
+                    </div>
                     <div className="description justify-content-end gap-2 my-3">
-                        <button type="submit">Register</button>
+                        <button className="login-button" type="submit">Register</button>
                     </div>
                     <p>Already have an account? <Link to="/login">Login here</Link></p>
                 </div>
                 <div className="col-md-3"></div>
             </div>
         </form>
+        </div>
+        </div>
         </>
     )
 }

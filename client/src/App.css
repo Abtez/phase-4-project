@@ -404,7 +404,105 @@ input[name="top-nav-search-last-input"]{
 } */
 
 
+/* Login Component */
 
+.bg-image-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://wallpaperaccess.com/full/2425075.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  background-color: hsla(40, 100%, 6%, 0.6);
+  padding: 1rem 3rem;
+  width: 60%;
+  min-width: 40rem;
+  max-width: 60rem;
+  border-radius: 1rem;
+  height: fit-content !important;
+}
+
+.login-container h3 {
+  font-size: 3.1rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.login-container p{
+  color: #FFFFFF;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.input-group ::placeholder{
+  color: #FFFFFF !important;
+  font-size: 18px !important;
+}
+
+.input-group input {
+  width: 450px !important;
+  height: 48px !important;
+  padding: 0.1rem 0.25rem;
+  background-color: hsla(40, 100%, 91%, 0.3);
+  border: 1px solid hsl(40, 100%, 6%);
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.input-group input:focus {
+  border: 1px solid hsl(40, 100%, 50%)
+}
+
+.input-group textarea {
+  width: 450px !important;
+  height: 150px !important;
+  padding: 0.1rem 0.25rem;
+  background-color: hsla(40, 100%, 91%, 0.3);
+  border: 1px solid hsl(40, 100%, 6%);
+  outline: none;
+  border-radius: 5px;
+  color: #000 !important;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.input-group textarea:focus {
+  border: 1px solid hsl(40, 100%, 50%)
+}
+
+.login-button {
+  padding: 1rem 3rem;
+  width: 450px !important;
+  border-radius: 5px; 
+  background-color: hsla(40, 100%, 50%, 0.1);
+  border: 1px solid hsl(40, 100%, 50%);
+  outline: none;
+  color: white;
+  font-weight: lighter;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: hsla(40, 100%, 50%, 0.3)
+}
+
+.login-button:focus {
+  background-color: hsla(40, 100%, 50%, 0.5)
+}
 
 
 
