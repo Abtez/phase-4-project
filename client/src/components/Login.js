@@ -24,18 +24,18 @@ export default function Login({getUser, error}){
 
     return(
         <>
-        <div class="bg-image-container">
-        <div class="login-container">
+        <div className="bg-image-container">
+        <div className="login-container">
         <form onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                 <h3 className="my-4 text-center"><span className="line">Welcome</span> Back</h3>
                 {error ? <p className='text-danger' id='error'>Error! Invalid username or password.</p> : false}
-                <div class="input-group">
+                <div className="input-group">
                 <input value={formData.username} onChange={handleInput} className="form-control my-3" type="text" name="username" placeholder="Enter username" />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                 <input value={formData.password} onChange={handleInput} className="form-control my-3" type="password" name="password" placeholder="Password" />
                 </div>    
                 <div className="description justify-content-end gap-2 my-3">
