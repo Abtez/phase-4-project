@@ -53,7 +53,7 @@ export default function Register({getUser}){
 
     return(
         <>
-        <div style={{height: 'auto'}} class="bg-image-container">
+        <div class="bg-image-container">
         <div class="login-container">
         <form onSubmit={handleSubmit}>
             <div className="row">
